@@ -14,7 +14,7 @@ object LocaleHelper {
     fun getAppLocale(): Locale {
         val languageName = PreferenceHelper.getString(PreferenceKeys.LANGUAGE, "sys")
         return when {
-            languageName == "sys" -> Locale.getDefault()
+            languageName == "sys" -> Resources.getSystem().configuration.locales[0]
             languageName.contains("-") -> {
                 val languageParts = languageName.split("-")
                 Locale(
